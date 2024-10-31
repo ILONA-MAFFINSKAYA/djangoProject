@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Commercial Offers List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Commercial Offers List</h1>
+    <ul>
+        {% for offer in offers %}
+            <li>{{ offer.number }} - {{ offer.date }} <a href="{% url 'edit_commercial_offer' offer.pk %}">Редактировать</a> | <a href="{% url 'generate_pdf' offer.pk %}">Сохранить в PDF</a> | <a href="{% url 'print_offer' offer.pk %}">Печать</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

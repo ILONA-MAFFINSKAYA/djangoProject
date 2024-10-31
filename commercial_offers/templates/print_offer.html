@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Commercial Offer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .offer {
+            margin: 20px;
+        }
+        .offer h1 {
+            text-align: center;
+        }
+        .offer p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="offer">
+        <h1>Commercial Offer {{ offer.number }}</h1>
+        <p>Date: {{ offer.date }}</p>
+        <p>Organization: {{ offer.organization.name }}</p>
+        <p>Recipient: {{ offer.recipient }}</p>
+        <p>Delivery Time: {{ offer.delivery_time }}</p>
+        <h2>Products</h2>
+        {% for product in offer.products.all %}
+            <p>Product: {{ product.name }}</p>
+            <p>Quantity: {{ product.quantity }}</p>
+            <p>Price per Unit: {{ product.price_per_unit }}</p>
+            <p>Total Price: {{ product.total_price }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
