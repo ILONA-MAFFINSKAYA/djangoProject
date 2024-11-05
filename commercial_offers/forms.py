@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from dal import autocomplete
 from .models import UserProfile, Product, CommercialOffer, OfferProduct, Decoration
 
 class UserProfileForm(forms.ModelForm):
@@ -14,9 +15,14 @@ class ProductForm(forms.ModelForm):
         fields = ['name', 'price', 'article', 'tags', 'photo']
 
 class CommercialOfferForm(forms.ModelForm):
+    products = forms.ModelMultipleChoiceField(
+        queryset=Product.objects.all(),
+        widget=autocomplete.ModelSelect2Multiple(url='product-autocomplete')
+    )
+
     class Meta:
         model = CommercialOffer
-        fields = ['organization', 'recipient', 'delivery_time', 'decoration']
+        fields = ['organization', 'products', 'delivery_time', 'user', 'decoration']
 
 class OfferProductForm(forms.ModelForm):
     class Meta:

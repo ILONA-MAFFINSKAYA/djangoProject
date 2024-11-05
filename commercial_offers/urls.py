@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, autocomplete
 
 urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('print_offer/<int:pk>/', views.print_offer, name='print_offer'),
     path('signup/', views.signup, name='signup'),
     path('products_list/', views.products_list, name='products_list'),
+    path('product-autocomplete/', autocomplete.ProductAutocomplete.as_view(), name='product-autocomplete'),
 ]

@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'commercial_offers',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'dal',
+    'dal_select2',
 ]
 
 MIDDLEWARE = [

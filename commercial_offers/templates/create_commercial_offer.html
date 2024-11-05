@@ -1,14 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Create Commercial Offer</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'autocomplete_light/select2.css' %}">
+    <script type="text/javascript" src="{% static 'autocomplete_light/jquery.init.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/select2.js' %}"></script>
+    <script type="text/javascript" src="{% static 'autocomplete_light/autocomplete.init.js' %}"></script>
 </head>
 <body>
     <h1>Create Commercial Offer</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Создать</button>
+        <button type="submit">Save</button>
     </form>
 </body>
 </html>
